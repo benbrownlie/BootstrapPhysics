@@ -37,9 +37,14 @@ void PhysicsScene::update(float deltaTime)
 		}
 		accumulatedTime -= m_timeStep;
 
-		for (auto outer = m_actors.begin(); outer != --m_actors.end(); outer++)
+		auto outerEnd = m_actors.end();
+		outerEnd--;
+
+		for (auto outer = m_actors.begin(); outer != outerEnd; outer++)
 		{
-			for (auto inner = ++outer; inner != m_actors.end(); inner++)
+			auto innerStart = outer;
+			innerStart++;
+			for (auto inner = innerStart; inner != m_actors.end(); inner++)
 			{
 				PhysicsObject* object1 = *outer;
 				PhysicsObject* object2 = *inner;
@@ -66,5 +71,20 @@ glm::vec2 PhysicsScene::getGravity() const
 
 bool PhysicsScene::sphereToSphere(Sphere* sphere1, Sphere* sphere2)
 {
+	if (sphere1 != nullptr && sphere2 != nullptr)
+	{
+		glm::vec2 position1 = sphere1->getPosition();
+		glm::vec2 position2 = sphere2->getPosition();
+		glm::vec2 distanceVec = position1 - position2;
+		float distance = glm::sqrt(distanceVec.x * distanceVec.x + distanceVec.y * distanceVec.y);
+		float totalRadius = sphere1->getRadius() + sphere2->getRadius();
+
+		if (glm::abs(distance) < totalRadius)
+		{
+			sphere2->applyForce(-(sphere2->getVelocity() * sphere2->getMass()));
+			sphere1->applyForce(-(sphere1->getVelocity() * sphere1->getMass()));
+		}
+	}
+
 	return false;
 }

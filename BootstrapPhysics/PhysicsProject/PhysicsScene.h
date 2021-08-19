@@ -1,5 +1,7 @@
 #pragma once
 #include "glm/vec2.hpp"
+#include "glm/exponential.hpp"
+#include "glm/ext.hpp"
 #include <set>
 
 class PhysicsObject;
