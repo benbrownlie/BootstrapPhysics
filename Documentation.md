@@ -22,7 +22,7 @@
 * > **public virtual void update(float deltatime)-** Checks for input presses.
 * > **public virtual void draw()-** Used to render objects to the screen.
 
-## PhysicsObject class
+## PhysicsObject Class
 
 *Functions*
 
@@ -32,7 +32,13 @@
 * > **public virtual void resetPosition()-** 
 * > **public ShapeType getShapeID()-** Returns the variable m_shapeID.
 
-## PhysicsProject class
+## PhysicsProject Class
+
+Calls game->run
+
+## PhysicsScene Class
 
 *Variables*
+
+
 
