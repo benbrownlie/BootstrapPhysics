@@ -7,6 +7,9 @@
 ## Game Structure
 **Classes, Functions, and Variables**
 
+***This project utilizes AIE's bootstrap***
+
+
 ## PhysicsGame Class
 
 ****Variables****
