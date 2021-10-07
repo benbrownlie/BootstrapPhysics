@@ -12,6 +12,8 @@ Engine::Engine() : Engine(1280, 720, "Window")
 Engine::Engine(int width, int height, const char* title)
 {
 	m_world = new World(width, height);
+	m_world->setWindow(m_window);
+
 	m_width = width;
 	m_height = height;
 	m_title = title;
@@ -29,6 +31,10 @@ int Engine::run()
 {
 	int exitCode = 0;
 
+	double currentTime = 0.0f;
+	double previousTime = 0.0f;
+	double deltaTime = 0.0f;
+
 	//Start
 	exitCode = start();
 	if (exitCode)
@@ -36,10 +42,17 @@ int Engine::run()
 		return exitCode;
 	}
 
-	//Update
+	//Update and draw
 	while (!getGameOver())
 	{
-		exitCode = draw(m_shader);
+		//Get the current time
+		currentTime = glfwGetTime();
+		//Find the change in time
+		deltaTime = currentTime - previousTime;
+		//Store the current time for the next loop
+		previousTime = currentTime;
+
+		exitCode = update(deltaTime);
 		if (exitCode)
 		{
 			return exitCode;
@@ -108,18 +121,19 @@ int Engine::start()
 		return -10;
 	}
 
+	m_world->setWindow(m_window);
 	m_world->start();
 
 	return 0;
 }
 
-int Engine::update()
+int Engine::update(double deltaTime)
 {
 	if (!m_window) return -4;
 
 	glfwPollEvents();
 
-	m_world->update();
+	m_world->update(deltaTime);
 
 	return 0;
 }
