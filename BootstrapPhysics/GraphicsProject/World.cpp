@@ -23,9 +23,9 @@ void World::start()
 
 	//Create camera transforms
 	Transform cameraTransform = m_camera.getTransform();
-	cameraTransform.setPosition(glm::vec3(1.0f));
-	cameraTransform.setRotation(glm::vec3(-45.0f, 45.0f, 0.0f));
-	//m_camera.setTransform();
+	//cameraTransform.setPosition(glm::vec3(1.0f));
+	//cameraTransform.setRotation(glm::vec3(-45.0f, 45.0f, 0.0f));
+	m_camera.setTransform(cameraTransform);
 	/*m_camera.setTransform(glm::lookAt(
 		glm::vec3(1.0f, 1.0f, 1.0f),
 		glm::vec3(0.0f),
