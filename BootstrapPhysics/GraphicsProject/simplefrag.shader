@@ -26,7 +26,7 @@ void main()
 	vec3 lightNormal = normalize(lightDirection);
 
 	//Calculate ambient color
-	vec4 ambientColor = vec4(Ka, 1) * lightAmbient;
+	vec4 ambientColor = vec4(Ka, 1.0f) * lightAmbient;
 
 	//Calculate diffuse color
 	float lambertTerm = dot(surfaceNormal, -lightNormal);

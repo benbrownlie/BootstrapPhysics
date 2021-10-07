@@ -22,7 +22,7 @@ void World::start()
 	m_light.setAmbient(glm::vec4(0.6f, 0.6f, 0.0f, 1.0f));
 	m_light.setDiffuse(glm::vec4(0.6f, 0.6f, 1.0f, 1.0f));
 	m_light.setSpecular(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f));
-	m_light.setSpecularPower(0.5f);
+	m_light.setSpecularPower(2.0f);
 
 	//Create camera transforms
 	Transform cameraTransform = m_camera.getTransform();
