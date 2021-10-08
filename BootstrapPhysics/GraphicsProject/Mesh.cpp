@@ -67,6 +67,16 @@ void Mesh::start()
 		sizeof(Vertex),			//size in bytes of one vertex
 		(void*)sizeof(glm::vec4)//memory position of this attribute
 	);
+	//Enable vertex texture coordinate as third attribute
+	glEnableVertexAttribArray(2);
+	glVertexAttribPointer(
+		2,						//attribute index
+		2,						//number of values within attribute
+		GL_FLOAT,				//type of each value
+		GL_FALSE,				//whether to normalize
+		sizeof(Vertex),			//size in bytes of one vertex
+		(void*)(sizeof(glm::vec4) * 2)//memory position of this attribute
+	);
 
 	//Unbind buffer and array
 	glBindVertexArray(0);
